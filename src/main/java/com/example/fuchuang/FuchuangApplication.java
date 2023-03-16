@@ -8,6 +8,7 @@ public class FuchuangApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FuchuangApplication.class, args);
+        System.out.println("启动类完成启动");
     }
 
 }
