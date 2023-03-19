@@ -23,7 +23,7 @@ public class UserController {
         List<User> users = userMapper.findAll();
         m.addAttribute("user",users);
         System.out.println(users);
-        return "user";//注意：此处在页面显示的是user表中的原始json数据并非jsp页面
+        return "user";//注意：此处在页面只能返回一个字符串，即是说在页面上显示user
     }
 
     @ResponseBody
@@ -37,7 +37,7 @@ public class UserController {
     @RequestMapping("/index")
     public String index() {
 
-        return "index";
+        return "index";//此处返回静态页面index，内容为hello，朱清杨
     }
 
 
