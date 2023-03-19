@@ -3,29 +3,36 @@ package com.example.fuchuang.controller;
 
 import com.example.fuchuang.mapper.UserMapper;
 import com.example.fuchuang.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import java.util.List;
 
 @Controller
-@ResponseBody
+
 
 public class UserController {
-    @Autowired
+    @Resource
     UserMapper userMapper;
-
+    @ResponseBody
     @RequestMapping("/user")
-    public List<User> userMapper(Model m){
+    public String userMapper(Model m){
         List<User> users = userMapper.findAll();
         m.addAttribute("user",users);
         System.out.println(users);
-        return users;
+        return "user";//注意：此处在页面显示的是user表中的原始json数据并非jsp页面
+    }
+
+    @ResponseBody
+    @RequestMapping("/usertext")
+    public List<User> userlist(Model m){
+        List<User> users = userMapper.findAll();
+        m.addAttribute("user",users);
+        System.out.println(users);
+        return users;//注意：此处在页面显示的是user表中的原始json数据并非jsp页面
     }
     @RequestMapping("/index")
     public String index() {
