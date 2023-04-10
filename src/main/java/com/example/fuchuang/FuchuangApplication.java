@@ -16,6 +16,7 @@ public class FuchuangApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(FuchuangApplication.class, args);
         System.out.println("启动类完成启动");
+
     }
     @RequestMapping(value="/hello",method= RequestMethod.GET)
     public String index() {

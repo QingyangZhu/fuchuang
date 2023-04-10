@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Schedule</title>
+</head>
+<body>
+<h1>Employee Schedule</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Begin Time</th>
+    <th>End Time</th>
+  </tr>
+  </thead>
+  <tbody id="scheduleTable"></tbody>
+</table>
+<script>
+  fetch('/employee-schedule')
+          .then(response => response.json())
+          .then(schedules => {
+            const scheduleTable = document.getElementById('scheduleTable');
+            schedules.forEach(schedule => {
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+              <td>${schedule.wid}</td>
+              <td>${schedule.wname}</td>
+              <td>${schedule.w_begintime}</td>
+              <td>${schedule.w_endtime}</td>
+            `;
+              scheduleTable.appendChild(tr);
+            });
+          });
+</script>
+</body>
+</html>

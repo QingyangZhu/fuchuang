@@ -1,7 +1,8 @@
 package com.example.fuchuang.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.fuchuang.pojo.User;
+
+import com.example.fuchuang.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

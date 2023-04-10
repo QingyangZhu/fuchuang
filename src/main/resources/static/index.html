@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<h1>Users</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="userTable">
+    </tbody>
+</table>
+<script>
+
+    fetch('/users')
+        .then(response => response.json())
+        .then(users => {
+            const userTable = document.getElementById('userTable');
+            users.forEach(user => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                    `;
+                userTable.appendChild(tr);
+            });
+        });
+</script>
+</body>
+</html>

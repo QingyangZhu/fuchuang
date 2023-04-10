@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Schedule</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Employee Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="employeeSchedule : ${employeeScheduleList}">
+        <td th:text="${employeeSchedule.wname}"></td>
+        <td th:text="${employeeSchedule.w_begintime}"></td>
+        <td th:text="${employeeSchedule.w_endtime}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+>

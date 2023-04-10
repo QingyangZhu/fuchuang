@@ -1,16 +1,24 @@
 package com.example.fuchuang.controller;
 
 
-import com.example.fuchuang.mapper.UserMapper;
-import com.example.fuchuang.pojo.User;
+/*import com.example.fuchuang.mapper.UserMapper;
+//import com.example.fuchuang.pojo.User;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseBody;*/
+
+import com.example.fuchuang.entity.User;
+import com.example.fuchuang.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/*
 @Controller
 
 
@@ -23,8 +31,11 @@ public class UserController {
         List<User> users = userMapper.findAll();
         m.addAttribute("user",users);
         System.out.println(users);
-        return "user";//注意：此处在页面只能返回一个字符串，即是说在页面上显示user
+        return "userVIEW";//注意：此处在页面只能返回一个字符串，即是说在页面上显示user
     }
+
+
+
 
     @ResponseBody
     @RequestMapping("/usertext")
@@ -41,4 +52,17 @@ public class UserController {
     }
 
 
+}*/
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }

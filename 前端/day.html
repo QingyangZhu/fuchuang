@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Schedule</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+thead,tr{border-top-width:1px;border-top-style:solid;border-top-color:rgb(235,242,224);}
+table{	table-layout:fixed;
+		width:100%;
+		margin-bottom:20px;
+		border-bottom-width:1px;
+		border-bottom-style:solid;
+		border-bottom-color:rgb(235,242,224);
+	}
+table td{	padding:5px 10px;
+			font-size:12px;
+			font-family:Verdana;
+			color:rgb(149,170,109);
+			font-weight:normal;
+			padding:8px;border:1px solid #ddd;
+			}
+table th{	padding:5px 10px;
+			font-size:12px;
+			font-family:Verdana;
+			color:rgb(149,170,109);
+			text-align:middle;
+			background-color:#f9f9f9;
+			font-weight:normal;
+			padding:8px;
+			border:1px solid #ddd;
+			}
+.schedule{	margin:50px auto;width:80%;
+			}
+.td2:hover{	background-color:#f0f0f0;
+			}
+.td3{	background-color:#f9f9f9;
+		}
+.nav-tabs{	border-bottom:2px solid #ccc;
+			}
+.tab-content{padding:20px;
+			background-color:#fff;
+			border:2px solid #ccc;border-top:none;
+			}
+tbody th{	background:lightgrey;
+			}
+.date{position:absolute;left:1050px;top:180px;padding:20px;}td[contenteditable="true"]{background-color:#fff;}td[contenteditable="true"]:focus{outline:none;border:1px solid #007bff;}
+.save{
+		position:absolute;
+		left:1210px;
+		top:630px;}
+</style>
+</head>
+<body>
+<div class="date">
+<label for="dd">DATE：</label>
+<input type="date" id="dd" name="dd">
+</div>
+<div class="schedule">
+<h1>Employee Schedule</h1>
+<div class="calendar">
+<ul class="tab">
+<li><a href="#" class="active">Day</a></li>
+<li><a href="../src/main/resources/templates/week.html">Week</a></li>
+</ul>
+<div class="tab-content">
+<div id="day" class="tab-pane active">
+<h2>Today's Schedule</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>6</th>
+<th></th>
+<th></th>
+<th></th>
+<th>10</th>
+<th></th>
+<th></th>
+<th></th>
+<th>14</th>
+<th></th>
+<th></th>
+<th></th>
+<th>18</th>
+<th></th>
+<th></th>
+<th></th>
+<th>22</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp1</a></td>
+<td class="td2" onclick="changeColor(this,0)"></td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+<td class="td2" onclick="changeColor(this,0)"</td>
+</tr>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp2</a></td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+<td class="td2" onclick="changeColor(this,1)"</td>
+</tr>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp3</a></td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+<td class="td2" onclick="changeColor(this,2)"</td>
+</tr>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp4</a></td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+<td class="td2" onclick="changeColor(this,3)"</td>
+</tr>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp5</a></td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+<td class="td2" onclick="changeColor(this,4)"</td>
+</tr>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp6</a></td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+<td class="td2" onclick="changeColor(this,5)"</td>
+</tr>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp7</a></td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+<td class="td2" onclick="changeColor(this,6)"</td>
+</tr>
+<tr>
+<td class="td3"><a href="#" title="点击查看员工信息">Emp8</a></td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+<td class="td2" onclick="changeColor(this,7)"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<button class = "save" onclick="">保存修改</button>
+<script>function changeColor(cell,number) {if (cell.className !=="") {cell.style.backgroundColor ="";cell.className ="";} else {if(number==0){cell.style.backgroundColor ="#f4f9f4";cell.className ="colored";}
+else if(number==1){cell.style.backgroundColor ="#f6faf6";cell.className ="colored";}
+else if(number==2){cell.style.backgroundColor ="#c4e3cb";cell.className ="colored";}
+else if(number==3){cell.style.backgroundColor ="#c6e5cd";cell.className ="colored";}
+else if(number==4){cell.style.backgroundColor ="#8aae92";cell.className ="colored";}
+else if(number==5){cell.style.backgroundColor ="#8caf94";cell.className ="colored";}
+else if(number==6){cell.style.backgroundColor ="#616161";cell.className ="colored";}
+else{cell.style.backgroundColor ="#636363";fadeIn(this,100)
+cell.className ="colored";}
+}
+}
+function getCurrentDate() {var today =new Date();var year =today.getFullYear();var month =today.getMonth() + 1;var date =today.getDate();return year + "-" + month + "-" + date;}
+var currentDate =getCurrentDate();document.getElementById("demo").innerHTML ="当前日期：" + currentDate;
+
+
+
+</script>
+</body>
+</html>

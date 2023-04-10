@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>员工排班信息</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>员工排班信息</h1>
+<table id="schedule-table">
+    <thead>
+    <tr>
+        <th></th>
+        <th th:each="employee : ${employees}" th:text="${employee}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="time : ${times}">
+        <td th:text="${time}"></td>
+        <td th:each="employee : ${employees}">
+            <div th:id="${employee + '-' + time}" class="schedule-cell"></div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script th:inline="javascript">
+    var scheduleData = /*[[${scheduleData}]]*/ null;
+    var employees = /*[[${employees}]]*/ null;
+    var times = /*[[${times}]]*/ null;
+
+    function renderSchedule() {
+        if (scheduleData && employees && times) {
+            for (var i = 0; i < times.length; i++) {
+                for (var j = 0; j < employees.length; j++) {
+                    var cellId = employees[j] + '-' + times[i];
+                    var cell = document.getElementById(cellId);
+                    if (scheduleData[employees[j]][times[i]]) {
+                        cell.style.backgroundColor = 'lightgreen';
+                    } else {
+                        cell.style.backgroundColor = 'white';
+                    }
+                }
+            }
+        }
+    }
+
+    renderSchedule();
+</script>
+</body>
+</html>

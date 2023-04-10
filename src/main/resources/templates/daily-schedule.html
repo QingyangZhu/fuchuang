@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Schedule</title>
+</head>
+<body>
+<h1>Daily Schedule</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Begin Time</th>
+    <th>End Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="schedule : ${scheduleList}">
+    <td th:text="${schedule.getWname()}"></td>
+    <td th:text="${schedule.getWbegintime()}"></td>
+    <td th:text="${schedule.getWendtime()}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

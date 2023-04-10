@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+	body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+	}
+
+	.schedule {
+		margin: 50px auto;
+		width: 80%;
+	}
+
+	.nav-tabs {
+		border-bottom: 2px solid #ccc;
+	}
+
+	.tab-content {
+		padding: 20px;
+	background-color: #fff;
+		border: 2px solid #ccc;
+	border-top: none;
+	}
+
+	table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 20px;
+	}
+
+	th, td {
+	text-align: left;
+	padding: 8px;
+	border: 1px solid #ddd;
+	}
+
+	th {
+	background-color: #f2f2f2;
+	font-weight: normal;
+	}
+
+	td[contenteditable="true"]:hover {
+	background-color: #f9f9f9;
+	cursor: pointer;
+	}
+
+	td[contenteditable="true"] {
+	background-color: #fff;
+	}
+
+	td[contenteditable="true"]:focus {
+	outline: none;
+	border: 1px solid #007bff;
+	}
+	tbody th{background:lightgrey;}
+	.week {
+        position: absolute;
+        left: 1060px;
+        top: 180px;
+        
+        padding: 20px;
+      }	
+</style>
+</head>
+<body>
+	<div class="week">
+	<label for="week-selector">week：</label>
+	<input type="week" id="week-selector" value="<?php echo date('Y-\WW'); ?>">
+	</div>
+    <div class="schedule">
+        <h1>Employee Schedule</h1>
+        <div class="calendar">
+            <ul class="tab">
+                <li><a href="day.html#" class="active" >Day</a></li>
+                <li><a href="#">Week</a></li>
+            </ul>
+            <div class="tab-content">
+                
+                <div id="week" class="tab-pane">
+                    <h2>This Week's Schedule</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th rowspan="2">Monday   	<br><p id="everydate1"></p></th>
+                                <th rowspan="2">Tuesday		<br><p id="everydate2"></p></th>
+                                <th rowspan="2">Wednesday	<br><p id="everydate3"></p></th>
+                                <th rowspan="2">Thursday	<br><p id="everydate4"></p></th>
+                                <th rowspan="2">Friday		<br><p id="everydate5"></p></th>
+                                <th rowspan="2">Saturday	<br><p id="everydate6"></p></th>
+                                <th rowspan="2">Sunday		<br><p id="everydate7"></p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="employeeWeeklySchedule : ${employeeWeeklyScheduleList}">
+                            <td th:text="${employeeWeeklySchedule.wname}"></td>
+                            <td th:text="${employeeWeeklySchedule.w_mon}"></td>
+                            <td th:text="${employeeWeeklySchedule.w_tues}"></td>
+                            <td th:text="${employeeWeeklySchedule.w_wen}"></td>
+                            <td th:text="${employeeWeeklySchedule.w_thur}"></td>
+                            <td th:text="${employeeWeeklySchedule.w_fri}"></td>
+                            <td th:text="${employeeWeeklySchedule.w_sat}"></td>
+                            <td th:text="${employeeWeeklySchedule.w_sun}"></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<script>
+
+    document.getElementById("abc").innerHTML = 101213265;
+  /* Change the color of a cell when it is clicked */
+  function changeColor(cell) {
+    if (cell.className === "grayed") {
+      cell.style.backgroundColor = "";
+      cell.className = "";
+    } else {
+      cell.style.backgroundColor = "#ddd";
+      cell.className = "grayed";
+    }
+  }
+ //基于周一算一周七天
+    function datePlusOne(b){//31天的
+		if (m.getMonth()+1==1 ||m.getMonth()+1==3||m.getMonth()+1==5||
+		m.getMonth()+1==7||m.getMonth()+1==8||m.getMonth()+1==10||m.getMonth()+1==12)
+		{
+			if (m.getDate()+b >31){
+				return m.getMonth()+2+"-"+(m.getDate()+b-31);
+			}
+			else{
+				return m.getMonth()+1+"-"+(m.getDate()+b);
+			}
+		}
+		else if (m.getMonth()+1==2 &&m.getFullYear()%4 ==0 )//29天
+        {
+			if (m.getDate()+b >29){
+				return m.getMonth()+2+"-"+(m.getDate()+b-29);
+			}
+			else{
+				return m.getMonth()+1+"-"+(m.getDate()+b);
+			}
+		}	
+		else if (m.getMonth()+1==2 &&m.getFullYear()%4 !=0 )//28天
+		{
+			if (m.getDate()+b >28){
+				return m.getMonth()+2+"-"+(m.getDate()+b-28);
+			}
+			else{
+				return m.getMonth()+1+"-"+(m.getDate()+b);
+			}
+		}	
+		else//30天的
+        {
+			if (m.getDate()+b >30){
+				return m.getMonth()+2+"-"+(m.getDate()+b-30);
+			}
+			else{
+				return m.getMonth()+1+"-"+(m.getDate()+b);
+			}
+		}
+	}	
+    function dateMinusOne(a){
+        
+        if (d.getMonth()==1 ||d.getMonth()==3||d.getMonth()==5||
+		d.getMonth()==7||d.getMonth()==8||d.getMonth()==10||d.getMonth()==0)//上个月是31天
+		{
+			if (d.getDate()-a < 0){
+				//return d.getMonth()+","+(d.getDate()-a+31);
+                m.setMonth(d.getMonth()-1);m.setDate(d.getDate()-a+31);
+			}
+			else{
+				//return d.getMonth()+1+","+(d.getDate()-a);
+                m.setMonth(d.getMonth());m.setDate(d.getDate()-a);
+			}
+		}
+		else if (d.getMonth()==2 &&d.getFullYear()%4 ==0 )//上个月29天
+        {
+			if (d.getDate()-a < 0){
+				m.setMonth(d.getMonth()-1);m.setDate(d.getDate()-a+29);
+			}
+			else{
+				m.setMonth(d.getMonth());m.setDate(d.getDate()-a);
+			}
+		}	
+		else if (d.getMonth()==2 &&d.getFullYear()%4 !=0 )//上个月28天
+		{
+			if (d.getDate()-a < 0 ){
+				//return d.getMonth()+","+(d.getDate()-a+28);
+                m.setMonth(d.getMonth()-1);m.setDate(d.getDate()-a+28);
+			}
+			else{
+				//return d.getMonth()+1+","+(d.getDate()-a);
+                m.setMonth(d.getMonth());m.setDate(d.getDate()-a);
+            }
+		}	
+		else//上个月30天的
+        {
+			if (d.getDate()-a < 0){
+				m.setMonth(d.getMonth()-1);m.setDate(d.getDate()-a+30);
+			}
+			else{
+				m.setMonth(d.getMonth());m.setDate(d.getDate()-a);
+			}
+		}
+    }    
+function beMonday(m){
+    if (d.getDay()==0){
+        dateMinusOne(6);
+    }
+    else{
+        dateMinusOne(d.getDay()-1);
+    }
+}
+var d = new Date();
+//document.getElementById("everydate"+(d.getDay()%7)).innerHTML = d.getMonth()+1+"-"+d.getDate();
+var m = new Date();
+beMonday(m);
+document.getElementById("everydate1").innerHTML = datePlusOne(0);//周一
+document.getElementById("everydate2").innerHTML = datePlusOne(1);//周二
+document.getElementById("everydate3").innerHTML = datePlusOne(2);//周三
+document.getElementById("everydate4").innerHTML = datePlusOne(3);//周四
+document.getElementById("everydate5").innerHTML = datePlusOne(4);//周五
+document.getElementById("everydate6").innerHTML = datePlusOne(5);//周六
+document.getElementById("everydate7").innerHTML = datePlusOne(6);//周日
+//document.getElementById("everydate"+"2").innerHTML = d.getMonth()+1+"-"+(d.getDate()+1);
+//接下来还需要一个接受信息，将周一（m）设置为接收的那个日期，来获得其他周的。
+</script>
+
+</body>
+</html>							
