@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,7 +29,8 @@ public class ScheduleController {
     public Object search(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                    LocalDate date) {
+                    LocalDate date,
+            Model model) {
         logger.info("Start searching schedules. Name={}, date={}", name, date);
 
         List<Schedule> schedules = new ArrayList<>();
@@ -42,8 +45,9 @@ public class ScheduleController {
         }
 
         logger.info("Search result: {}", schedules);
+        model.addAttribute("schedules", schedules);
         //System.out.println("jg:"+scheduleList);
-        return schedules;
+        return "search";
     }
 }
 

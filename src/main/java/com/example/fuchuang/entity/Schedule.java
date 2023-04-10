@@ -11,19 +11,19 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long wid;
+    public Long wid;
 
     @Column(name = "wname")
-    private String wname;
+    public String wname;
 
     @Column(name = "wdate")
-    private LocalDate wdate;
+    public LocalDate wdate;
 
     @Column(name = "wbegintime")
-    private LocalTime wbegintime;
+    public LocalTime wbegintime;
 
     @Column(name = "wendtime")
-    private LocalTime wendtime;
+    public LocalTime wendtime;
 
     // getter 和 setter 方法
 

@@ -35,8 +35,16 @@
         <th>Work End Time</th>
       </tr>
       </thead>
+
       <tbody>
+      <tr th:each="schedule : ${schedules}">
+        <td th:text="${schedule.wname}"></td>
+        <td th:text="${schedule.wdate}"></td>
+        <td th:text="${schedule.wbegintime}"></td>
+        <td th:text="${schedule.wendtime}"></td>
+      </tr>
       </tbody>
+
     </table>
   </div>
 
@@ -45,6 +53,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+<!--
 <script>
   $(document).ready(function() {
 
@@ -81,6 +90,7 @@
 
   });
 </script>
+-->
 
 </body>
 </html>
