@@ -67,19 +67,23 @@
 </style>
 </head>
 <body>
-	<div class="week">
-	<label for="week-selector">week：</label>
-	<input type="week" id="week-selector" value="<?php echo date('Y-\WW'); ?>">
-	</div>
+
+
     <div class="schedule">
         <h1>Employee Schedule</h1>
         <div class="calendar">
             <ul class="tab">
-                <li><a href="day.html#" class="active" >Day</a></li>
+                <li><a href="http://localhost:8088/search" class="active" >Day</a></li>
                 <li><a href="#">Week</a></li>
             </ul>
             <div class="tab-content">
-                
+                <form id="search-form" class="mb-4">
+                    <div class="week">
+                        <label for="week-selector">week：</label>
+                        <input type="week" id="week-selector" value="<?php echo date('Y-\WW'); ?>" name="weeknum">
+                        <span><button type="submit" class="btn btn-primary">Search</button></span>
+                    </div>
+                </form>
                 <div id="week" class="tab-pane">
                     <h2>This Week's Schedule</h2>
                     <table>
@@ -116,7 +120,7 @@
     </div>
 <script>
 
-    document.getElementById("abc").innerHTML = 101213265;
+
   /* Change the color of a cell when it is clicked */
   function changeColor(cell) {
     if (cell.className === "grayed") {

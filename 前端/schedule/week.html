@@ -68,8 +68,8 @@
 </head>
 <body>
 	<div class="week">
-	<label for="week-selector">week：</label>
-	<input type="week" id="week-selector" value="<?php echo date('Y-\WW'); ?>">
+	<label for="week-input">week：</label>
+	<input type="week" id="week-input" ><!--value="<?php echo date('Y-\WW'); ?>"-->
 	</div>
     <div class="schedule">
         <h1>Employee Schedule</h1>
@@ -298,9 +298,12 @@ function beMonday(m){
         dateMinusOne(d.getDay()-1);
     }
 }
-var d = new Date();
+
+    //var weekinput = document.getElementById("week-input").value;
+    //var selectedWeek = new Date(weekinput + "-0");
+var d = new date();
 //document.getElementById("everydate"+(d.getDay()%7)).innerHTML = d.getMonth()+1+"-"+d.getDate();
-var m = new Date();
+var m = new date();
 beMonday(m);
 document.getElementById("everydate1").innerHTML = datePlusOne(0);//周一
 document.getElementById("everydate2").innerHTML = datePlusOne(1);//周二
@@ -311,6 +314,7 @@ document.getElementById("everydate6").innerHTML = datePlusOne(5);//周六
 document.getElementById("everydate7").innerHTML = datePlusOne(6);//周日
 //document.getElementById("everydate"+"2").innerHTML = d.getMonth()+1+"-"+(d.getDate()+1);
 //接下来还需要一个接受信息，将周一（m）设置为接收的那个日期，来获得其他周的。
+
 </script>
 
 </body>

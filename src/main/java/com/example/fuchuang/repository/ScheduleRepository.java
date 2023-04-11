@@ -17,4 +17,6 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     List<Schedule> findByWdate(LocalDate wdate);
 
     List<Schedule> findByWnameAndWdate(String wname, LocalDate wdate);
+
+    List<Schedule> findByWnameOrWdate(String wname, LocalDate wdate);
 }

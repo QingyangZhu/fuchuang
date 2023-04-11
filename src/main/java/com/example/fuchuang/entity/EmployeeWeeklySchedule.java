@@ -17,6 +17,15 @@ public class EmployeeWeeklySchedule {
     public String w_fri;
     public String w_sat;
     public String w_sun;
+    public String weeknum;
+
+    public String getWeeknum() {
+        return weeknum;
+    }
+
+    public void setWeeknum(String weeknum) {
+        this.weeknum = weeknum;
+    }
 
     public Long getWid() {
         return wid;
